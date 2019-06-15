@@ -2,7 +2,7 @@ package MsLibreria.co.ud.libreria.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -76,7 +76,7 @@ public class Alquiler extends Operacion implements Serializable {
 	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Item.class)
 	 @JoinTable(name = "itemalquiler", joinColumns = { @JoinColumn(name = "id_alquiler") }, 
 	 			inverseJoinColumns = { @JoinColumn(name = "id_item") })
-	 public Set<Item> items;
+	 public List<Item> items;
 
 	public Double calcularTotal(){
 		return 0.0;

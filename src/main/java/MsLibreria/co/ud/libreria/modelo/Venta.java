@@ -1,7 +1,7 @@
 package MsLibreria.co.ud.libreria.modelo;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,7 +38,7 @@ public class Venta extends Operacion implements Serializable {
 				@JoinColumn(name="id_item")
 				}
 			)
-		private Set<Item> items;
+		private List<Item> items;
 
 		//bi-directional many-to-one association to Mediopago
 		@ManyToOne

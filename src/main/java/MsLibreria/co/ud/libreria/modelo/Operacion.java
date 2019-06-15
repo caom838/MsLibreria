@@ -1,9 +1,7 @@
 package MsLibreria.co.ud.libreria.modelo;
 
 import java.util.Date;
-import java.util.Set;
-
-import javax.persistence.MappedSuperclass;
+import java.util.List;
 
 import lombok.Data;
 
@@ -18,7 +16,7 @@ public abstract class Operacion {
 
 	private String comentarios;
 	private Date fecha;
-	private Set<Item> items;
+	private List<Item> items;
 	private MedioPago medioPago;
 	private Persona persona;
 	private Double valor;

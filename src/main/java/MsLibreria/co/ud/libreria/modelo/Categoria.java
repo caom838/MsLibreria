@@ -1,10 +1,13 @@
 package MsLibreria.co.ud.libreria.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
 import lombok.Data;
@@ -23,12 +26,4 @@ public class Categoria implements Serializable {
 	private @Id @GeneratedValue Integer id;
 	private String nombre;
 
-
-
-	public void finalize() throws Throwable {
-
-	}
-	public Categoria(){
-
-	}
 }//end Categoria

@@ -55,7 +55,7 @@ public class Item implements Serializable {
 
 
 	//bi-directional many-to-many association to Categoria
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Categoria.class)
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Categoria.class)
 	@JoinTable(
 		name="itemcategoria"
 		, joinColumns={
