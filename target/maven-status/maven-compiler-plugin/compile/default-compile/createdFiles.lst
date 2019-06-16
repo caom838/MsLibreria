@@ -15,7 +15,6 @@ MsLibreria\co\ud\libreria\servicios\ItemServicioImpl.class
 MsLibreria\co\ud\libreria\repositorio\LogRepository.class
 MsLibreria\co\ud\libreria\controller\TestControlador.class
 MsLibreria\co\ud\libreria\controller\VentaControlador.class
-MsLibreria\co\ud\libreria\controladores\request\UsuarioRequest.class
 MsLibreria\co\ud\libreria\servicios\ItemServicio.class
 MsLibreria\co\ud\libreria\servicios\AlquilerServicio.class
 MsLibreria\co\ud\libreria\modelo\Log.class
