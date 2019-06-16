@@ -1,6 +1,5 @@
 package MsLibreria.co.ud.libreria.controller;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import MsLibreria.co.ud.libreria.controladores.request.CategoriaDTO;
-import MsLibreria.co.ud.libreria.controladores.request.ItemRequest;
+import MsLibreria.co.ud.libreria.modelo.Categoria;
 import MsLibreria.co.ud.libreria.modelo.Item;
 import MsLibreria.co.ud.libreria.servicios.ItemServicio;
 import io.swagger.annotations.Api;
@@ -31,7 +29,7 @@ public class ItemControlador {
 	
 	@ResponseBody
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ApiOperation(value = "Agrega nuevo item", tags = "Items", nickname = "item", response = Item.class)
+	@ApiOperation(value = "Agrega nuevo item o editar uno existente", tags = "Items", nickname = "item", response = Item.class)
 	public ResponseEntity<Boolean> agregarItem(
 		    @ApiParam(value = "item", required = true) @RequestBody(required = true) Item item) {
 
@@ -56,7 +54,7 @@ public class ItemControlador {
 	
 	@ResponseBody
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "Agrega nuevo item", tags = "Items")
+	@ApiOperation(value = "Obtener item por id", tags = "Items")
 	public ResponseEntity<Item> consultarItem(@PathVariable String id) {
 
 		Long idItem = Long.valueOf(id);
@@ -75,11 +73,11 @@ public class ItemControlador {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@RequestMapping(value = "/categorias/all", method = RequestMethod.GET)
 	@ApiOperation(value = "Consultar todos las categorias", tags = "Categorias")
-	public ResponseEntity<List<Item>> consultarCategorias() {
+	public ResponseEntity<List<Categoria>> consultarCategorias() {
 
-		List<Item> resultado = itemServicio.consultarItems();
+		List<Categoria> resultado = itemServicio.consultarCategorias();
 
 		return ResponseEntity.ok(resultado);
 	}

@@ -41,7 +41,6 @@ public class ItemServicioImpl implements ItemServicio {
 	public Boolean editarItem(Item i) {
 		if(itemRepository.save(i) !=null)
 			return true;
-		
 		return false;
 	}
 

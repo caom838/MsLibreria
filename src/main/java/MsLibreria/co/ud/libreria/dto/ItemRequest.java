@@ -1,4 +1,4 @@
-package MsLibreria.co.ud.libreria.controladores.request;
+package MsLibreria.co.ud.libreria.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
