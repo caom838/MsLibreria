@@ -34,19 +34,7 @@ public class ItemControlador {
 		    @ApiParam(value = "item", required = true) @RequestBody(required = true) Item item) {
 
 		Boolean respuesta;
-//		Item itemE = new Item();
-//		itemE.setNombre(item.getNombre());
-//		itemE.setDescripcion(item.getDescripcion());
-//		itemE.setBanderaAlquiler(item.getBanderaAlquiler());
-//		itemE.setCodigoReferencia(item.getCodigoReferencia());
-//		itemE.setEstado(item.getBanderaAlquiler());;
-//		itemE.setPrecioAlquiler(item.getPrecioAlquiler());
-//		itemE.setPrecioVenta(item.getPrecioVenta());
-//		itemE.setStock(item.getStock());
 		
-		
-		//itemE.setcategorias(item.getBanderaAlquiler());;	
-				
 		respuesta = itemServicio.guardarItem(item);
 
 		return ResponseEntity.ok(respuesta);

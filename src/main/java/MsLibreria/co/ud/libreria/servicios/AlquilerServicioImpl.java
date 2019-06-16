@@ -21,8 +21,8 @@ public class AlquilerServicioImpl implements AlquilerServicio {
 	}
 
 	@Override
-	public Alquiler consultar(Alquiler alquiler) {
-		return alquilerRepository.findOne(alquiler.getId());
+	public Alquiler consultar(Long id) {
+		return alquilerRepository.findOne(id);
 	}
 
 	@Override

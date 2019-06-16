@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -29,7 +29,7 @@ public class Cliente extends Persona implements Serializable {
 	private String direccionFacturacion;
 
 	//bi-directional many-to-one association to Persona
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="id_persona")
 	private Persona persona;
 

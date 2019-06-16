@@ -23,8 +23,8 @@ public class VentaServicioImpl implements VentaServicio {
 	}
 
 	@Override
-	public Venta consultar(Venta venta) {
-		return ventaRepository.findOne(venta.getId());
+	public Venta consultar(Long id) {
+		return ventaRepository.findOne(id);
 	}
 
 	@Override

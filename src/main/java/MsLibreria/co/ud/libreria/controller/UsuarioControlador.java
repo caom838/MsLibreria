@@ -36,21 +36,21 @@ public class UsuarioControlador {
     @Autowired
     UsuarioServicio usuarioServicio;
 
-    @RequestMapping(method = RequestMethod.POST, value = "ping/")
-    @ApiOperation(value = "ping", nickname = "ping", response = UsuarioRequest.class)
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
-            @ApiResponse(code = 201, message = "Created"), @ApiResponse(code = 400, message = "Bad Request"),
-            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
-            @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure") })
-    public Boolean ping(
-            @ApiParam(value = "request", required = true) @RequestBody(required = true) UsuarioRequest request) {
-
-        logger.debug("--> ping received");
-        logger.debug("--> id: {}", request.getId());
-        logger.debug("--> nombre: {}", request.getNombreUsuario());
-
-        return true;
-    }
+//    @RequestMapping(method = RequestMethod.POST, value = "ping/")
+//    @ApiOperation(value = "ping", nickname = "ping", response = UsuarioRequest.class)
+//    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
+//            @ApiResponse(code = 201, message = "Created"), @ApiResponse(code = 400, message = "Bad Request"),
+//            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+//            @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure") })
+//    public Boolean ping(
+//            @ApiParam(value = "request", required = true) @RequestBody(required = true) UsuarioRequest request) {
+//
+//        logger.debug("--> ping received");
+//        logger.debug("--> id: {}", request.getId());
+//        logger.debug("--> nombre: {}", request.getNombreUsuario());
+//
+//        return true;
+//    }
     
     
     @ResponseBody

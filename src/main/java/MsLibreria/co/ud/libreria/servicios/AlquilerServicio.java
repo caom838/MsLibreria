@@ -7,7 +7,7 @@ import MsLibreria.co.ud.libreria.modelo.Alquiler;
 public interface AlquilerServicio extends OperacionService {
 
 		
-	Alquiler consultar(Alquiler alquiler);
+	Alquiler consultar(Long id);
 	
 	Boolean registrarAlquiler(Alquiler alquiler);
 	

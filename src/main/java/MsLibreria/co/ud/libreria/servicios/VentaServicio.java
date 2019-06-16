@@ -8,7 +8,7 @@ import MsLibreria.co.ud.libreria.modelo.Venta;
 
 public interface VentaServicio extends OperacionService {
 
-	Venta consultar(Venta venta);
+	Venta consultar(Long venta);
 		
 	Boolean registrarVenta(Venta venta);
 	

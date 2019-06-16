@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import MsLibreria.co.ud.libreria.dto.ItemRequest;
 import MsLibreria.co.ud.libreria.modelo.Categoria;
 import MsLibreria.co.ud.libreria.modelo.Item;
 import MsLibreria.co.ud.libreria.repositorio.CategoriaRepository;
@@ -57,5 +58,23 @@ public class ItemServicioImpl implements ItemServicio {
 
 		return (List<Categoria>)categoriaRepository.findAll();
 	}
+	
+	
+	private ItemRequest convertirItem(Item item) {
+		
+		ItemRequest itemE = new ItemRequest();
+		itemE.setNombre(item.getNombre());
+		itemE.setDescripcion(item.getDescripcion());
+		itemE.setBanderaAlquiler(item.getBanderaAlquiler());
+		itemE.setCodigoReferencia(item.getCodigoReferencia());
+		itemE.setEstado(item.getBanderaAlquiler());;
+		itemE.setPrecioAlquiler(item.getPrecioAlquiler());
+		itemE.setPrecioVenta(item.getPrecioVenta());
+		itemE.setStock(item.getStock());
+		//itemE.setCategorias(item.getCategorias());
+		
+		return itemE;
+	}
+	
 
 }

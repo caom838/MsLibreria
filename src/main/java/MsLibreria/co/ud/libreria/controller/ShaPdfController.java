@@ -21,8 +21,8 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("v1/pdf")
 public class ShaPdfController {
 
-	@Autowired
-	private IPdfService pdfService;
+//	@Autowired
+//	private IPdfService pdfService;
 
 	/**
 	 * Método que expone servicio para consultar el directorio FTP y devolverá un
@@ -31,20 +31,9 @@ public class ShaPdfController {
 	 * @param response
 	 * @throws IOException
 	 */
-	@GetMapping(path = "/generate", produces = "text/csv")
-	public void generateCsv(HttpServletResponse response) throws IOException {
-
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "Verifies the client's information", tags = "client")
-	public ResponseEntity<Persona> consultarClientes(@PathVariable Long id) {
-
-		Persona p = new Persona();
-
-		//return ResponseEntity.ok((Persona) personaServicioPdf.getPersona(p));
-		return ResponseEntity.ok(p);
-	}
+//	@GetMapping(path = "/generate", produces = "text/csv")
+//	public void generateCsv(HttpServletResponse response) throws IOException {
+//
+//	}
 
 }

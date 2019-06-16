@@ -9,7 +9,11 @@ public interface PersonaRepository extends  CrudRepository<Persona, Long> {
 
 	Persona getById(Long id);
 	
-	Persona getByTipoIdentificadorAndIdentificador(String tipoIdentificador, String identificador);
+	Persona findByTipoIdentificadorAndIdentificador(String tipoIdentificador, String identificador);
+	
+//	@Query("SELECT p, u , r FROM Persona p JOIN FETCH p.usuario u JOIN FETCH u.rol r")
+//	List<Persona> getAllPersonasUsuario();
+	
 	
 
 }
