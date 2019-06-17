@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -60,7 +61,7 @@ public class Persona implements Serializable {
 	private String tipoIdentificador;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Usuario.class)
 	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 
