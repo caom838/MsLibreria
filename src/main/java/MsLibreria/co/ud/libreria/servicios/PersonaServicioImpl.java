@@ -10,6 +10,7 @@ import MsLibreria.co.ud.libreria.dto.PersonaResponse;
 import MsLibreria.co.ud.libreria.dto.RolResponse;
 import MsLibreria.co.ud.libreria.dto.UsuarioResponse;
 import MsLibreria.co.ud.libreria.modelo.Cliente;
+import MsLibreria.co.ud.libreria.modelo.Empleado;
 import MsLibreria.co.ud.libreria.modelo.Persona;
 import MsLibreria.co.ud.libreria.modelo.Usuario;
 import MsLibreria.co.ud.libreria.repositorio.ClienteRepository;
@@ -40,18 +41,13 @@ public class PersonaServicioImpl implements PersonaServicio{
 	public List<Cliente> consultarClientes()
 	{
 		List<Cliente> respuesta = (List<Cliente>)clienteRepository.findAllWithPersona();
-//		List<PersonaResponse> pr = new ArrayList<>();
-//		for(Persona p : respuesta)
-//		{
-//			pr.add(convertirPersona(p));
-//		}
 		
 		return respuesta;
 	}
 
 	@Override
-	public PersonaResponse getEmpleado(Persona persona) {
-		return convertirPersona(personaRepository.getById(persona.getId()));
+	public PersonaResponse consultarEmpleado(Long id) {
+		return convertirPersona(personaRepository.getById(id));
 		 
 	}
 	
@@ -107,5 +103,23 @@ public class PersonaServicioImpl implements PersonaServicio{
 		rr.setEstado(usuario.getRol().isEstado());
 		ur.setRol(rr);
 		return ur;
+	}
+
+	@Override
+	public Boolean guardarCliente(Cliente cliente) {
+		Persona p = clienteRepository.save(cliente);
+		return p!=null?true:false;
+	}
+
+	@Override
+	public Boolean guardarEmpleado(Empleado empleado) {
+		Persona p = personaRepository.save(empleado);
+		return p!=null?true:false;
+	}
+
+	@Override
+	public List<Empleado> consultarEmpleados() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

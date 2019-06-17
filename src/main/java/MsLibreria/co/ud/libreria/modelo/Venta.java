@@ -3,7 +3,9 @@ package MsLibreria.co.ud.libreria.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,7 +30,7 @@ public class Venta extends Operacion implements Serializable {
 	private @Id @GeneratedValue Long id;
 
 	//bi-directional many-to-many association to Item
-		@ManyToMany
+		@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Item.class)
 		@JoinTable(
 			name="itemventa"
 			, joinColumns={
@@ -41,9 +43,9 @@ public class Venta extends Operacion implements Serializable {
 		private List<Item> items;
 
 		//bi-directional many-to-one association to Mediopago
-		@ManyToOne
+		@ManyToOne(cascade=CascadeType.MERGE)
 		@JoinColumn(name="id_mediopago")
-		private MedioPago mediopago;
+		private MedioPago medioPago;
 
 		//bi-directional many-to-one association to Persona
 		@ManyToOne

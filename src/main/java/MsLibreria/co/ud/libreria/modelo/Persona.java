@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -14,6 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import lombok.Data;
 
@@ -60,16 +65,19 @@ public class Persona implements Serializable {
 	private Usuario usuario;
 
 	//bi-directional many-to-many association to Tarjetacredito
-	@ManyToMany(mappedBy="personas")
+	@ManyToMany(mappedBy="personas", cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = TarjetaCredito.class)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<TarjetaCredito> tarjetasCredito;
 
 	
 	//bi-directional many-to-one association to Alquiler
-	@OneToMany(mappedBy="persona")
+	@OneToMany(mappedBy="persona", cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Alquiler.class)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Alquiler> alquilers;
 	
 	//bi-directional many-to-one association to Venta
-	@OneToMany(mappedBy="persona")
+	@OneToMany(mappedBy="persona", cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Venta.class)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Venta> ventas;
 
 }//end Persona

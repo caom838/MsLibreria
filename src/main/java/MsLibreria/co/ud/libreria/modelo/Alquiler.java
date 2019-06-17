@@ -41,13 +41,13 @@ public class Alquiler extends Operacion implements Serializable {
 	private Date fecha;
 	
 	/**
-	 * Fecha calculada de entrega o devoluci�n de un item por alquiler
+	 * Fecha calculada de entrega o devolucion de un item por alquiler
 	 */
 	@Column(name="fecha_entrega")
 	private Date fechaEntrega;
 
 	/**
-	 * Es la fecha real que se entreg� o devolvi� el item por alquiler
+	 * Es la fecha real que se entrego o devolvio el item por alquiler
 	 */
 	@Column(name="fecha_real_entrega")
 	private Date fechaRealEntrega;
@@ -55,25 +55,18 @@ public class Alquiler extends Operacion implements Serializable {
 	private Double valor;
 
 	//bi-directional many-to-one association to Mediopago
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="id_mediopago")
-	private MedioPago mediopago;
+	private MedioPago medioPago;
 
 	//bi-directional many-to-one association to Persona
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Persona.class)
 	@JoinColumn(name="id_persona")
 	private Persona persona;
 
 
-//	@ManyToMany(fetch=FetchType.LAZY)
-//	@JoinTable(
-//	  name = "itemalquiler", 
-//	  joinColumns = @JoinColumn(name = "id_alquiler"), 
-//	  inverseJoinColumns = @JoinColumn(name = "id_item"))
-//	private List<Item> items;
-	
 	 @Access(AccessType.PROPERTY)
-	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Item.class)
+	 @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Item.class)
 	 @JoinTable(name = "itemalquiler", joinColumns = { @JoinColumn(name = "id_alquiler") }, 
 	 			inverseJoinColumns = { @JoinColumn(name = "id_item") })
 	 public List<Item> items;

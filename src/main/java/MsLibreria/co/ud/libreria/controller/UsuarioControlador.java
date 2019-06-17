@@ -31,10 +31,10 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("usuario/")
 public class UsuarioControlador {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Autowired
-    UsuarioServicio usuarioServicio;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	@Autowired
+	UsuarioServicio usuarioServicio;
 
 //    @RequestMapping(method = RequestMethod.POST, value = "ping/")
 //    @ApiOperation(value = "ping", nickname = "ping", response = UsuarioRequest.class)
@@ -51,63 +51,59 @@ public class UsuarioControlador {
 //
 //        return true;
 //    }
-    
-    
-    @ResponseBody
+
+	@ResponseBody
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "Consultar usuario", tags = "Usuarios")
 	public ResponseEntity<UsuarioResponse> consultarUsuario(@PathVariable String id) {
 
 		Long idUsuario = Long.valueOf(id);
 		UsuarioResponse respuesta = usuarioServicio.consultarPorId(idUsuario);
-		
+
 		return ResponseEntity.ok(respuesta);
 	}
-    
-    
+
 	@ResponseBody
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	@ApiOperation(value = "Consultar todos los usuarios", tags = "Usuarios")
 	public ResponseEntity<List<UsuarioResponse>> consultarUsuarios() {
 
 		List<UsuarioResponse> usuarios = usuarioServicio.consultarUsuarios();
-				
+
 		return ResponseEntity.ok(usuarios);
 	}
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ApiOperation(value = "Agrega nuevo usuario o usuario uno existente", tags = "Usuarios", nickname = "usuario", response = Usuario.class)
 	public ResponseEntity<Boolean> agregarUsuario(
-		    @ApiParam(value = "usuario", required = true) @RequestBody(required = true) Usuario usuario) {
+			@ApiParam(value = "usuario", required = true) @RequestBody(required = true) Usuario usuario) {
 
 		Boolean respuesta;
 		respuesta = usuarioServicio.guardarUsuario(usuario);
 
 		return ResponseEntity.ok(respuesta);
 	}
-	
-	    @ResponseBody
-		@RequestMapping(value = "/rol/{id}", method = RequestMethod.GET)
-		@ApiOperation(value = "Consultar Rol", tags = "Roles")
-		public ResponseEntity<RolResponse> consultarRol(@PathVariable String id) {
 
-			Long idRol = Long.valueOf(id);
-			RolResponse respuesta = usuarioServicio.consultarRol(idRol);
+	@ResponseBody
+	@RequestMapping(value = "/rol/{id}", method = RequestMethod.GET)
+	@ApiOperation(value = "Consultar Rol", tags = "Roles")
+	public ResponseEntity<RolResponse> consultarRol(@PathVariable String id) {
 
-			return ResponseEntity.ok(respuesta);
-		}
-	    
-	    @ResponseBody
-		@RequestMapping(value = "/rol/all", method = RequestMethod.GET)
-		@ApiOperation(value = "Consultar Roles", tags = "Roles")
-		public ResponseEntity<List<RolResponse>> consultarRoles() {
+		Long idRol = Long.valueOf(id);
+		RolResponse respuesta = usuarioServicio.consultarRol(idRol);
 
-			
-			List<RolResponse> respuesta = usuarioServicio.consultarRoles();
+		return ResponseEntity.ok(respuesta);
+	}
 
-			return ResponseEntity.ok(respuesta);
-		}
-		
+	@ResponseBody
+	@RequestMapping(value = "/rol/all", method = RequestMethod.GET)
+	@ApiOperation(value = "Consultar Roles", tags = "Roles")
+	public ResponseEntity<List<RolResponse>> consultarRoles() {
+
+		List<RolResponse> respuesta = usuarioServicio.consultarRoles();
+
+		return ResponseEntity.ok(respuesta);
+	}
+
 }

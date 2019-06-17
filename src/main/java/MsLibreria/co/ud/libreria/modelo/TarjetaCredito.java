@@ -1,17 +1,22 @@
 package MsLibreria.co.ud.libreria.modelo;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -22,7 +27,9 @@ import lombok.Data;
  * @created 28-may.-2019 10:39:41 p. m.
  */
 @Data
-@Entity
+@Entity(name="tarjetacredito")
+@Table(name="tarjetacredito")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class TarjetaCredito extends MedioPago implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -31,8 +38,9 @@ public class TarjetaCredito extends MedioPago implements Serializable{
 	@Column(name="codigo_cvv")
 	private String codigoCvv;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
 	@Column(name="fecha_expiracion")
-	private Timestamp fechaExpiracion;
+	private Date fechaExpiracion;
 
 	@Column(name="numero_tarjeta")
 	private String numeroTarjeta;

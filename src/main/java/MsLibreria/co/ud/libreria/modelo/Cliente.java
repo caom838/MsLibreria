@@ -2,10 +2,13 @@ package MsLibreria.co.ud.libreria.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
@@ -18,6 +21,7 @@ import lombok.Data;
  */
 @Data
 @Entity(name = "cliente")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Cliente extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +33,7 @@ public class Cliente extends Persona implements Serializable {
 	private String direccionFacturacion;
 
 	//bi-directional many-to-one association to Persona
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_persona")
 	private Persona persona;
 
