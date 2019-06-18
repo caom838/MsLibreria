@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import MsLibreria.co.ud.libreria.modelo.Alquiler;
+import MsLibreria.co.ud.libreria.modelo.Item;
 import MsLibreria.co.ud.libreria.repositorio.AlquilerRepository;
 
 @Service
@@ -15,9 +16,15 @@ public class AlquilerServicioImpl implements AlquilerServicio {
 	AlquilerRepository alquilerRepository;
 	
 	@Override
-	public Double calcularTotal() {
-		// TODO Auto-generated method stub
-		return null;
+	public Double calcularTotal(List<Item> items) {
+		
+		Double resultado =0.0;
+		for(Item i : items)
+		{
+			
+		}
+		return resultado;
+		
 	}
 
 	@Override
