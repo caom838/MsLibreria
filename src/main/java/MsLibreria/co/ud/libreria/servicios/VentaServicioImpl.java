@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import MsLibreria.co.ud.libreria.modelo.Item;
 import MsLibreria.co.ud.libreria.modelo.Persona;
 import MsLibreria.co.ud.libreria.modelo.Venta;
+import MsLibreria.co.ud.libreria.repositorio.LogRepository;
 import MsLibreria.co.ud.libreria.repositorio.VentaRepository;
 
 @Service
@@ -16,10 +18,17 @@ public class VentaServicioImpl implements VentaServicio {
 	@Autowired
 	VentaRepository ventaRepository;
 	
+	@Autowired
+	LogRepository logRepository;
+	
 	@Override
-	public Double calcularTotal() {
-		// TODO Auto-generated method stub
-		return null;
+	public Double calcularTotal(List<Item> items) {
+		Double resultado =0.0;
+		for(Item i : items)
+		{
+			resultado = Double.sum(resultado,  i.getPrecioVenta().doubleValue());
+		}
+		return resultado;
 	}
 
 	@Override

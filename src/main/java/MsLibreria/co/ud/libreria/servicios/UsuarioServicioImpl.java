@@ -13,6 +13,7 @@ import MsLibreria.co.ud.libreria.modelo.Rol;
 import MsLibreria.co.ud.libreria.modelo.Usuario;
 import MsLibreria.co.ud.libreria.repositorio.RolRepository;
 import MsLibreria.co.ud.libreria.repositorio.UsuarioRepository;
+import MsLibreria.co.ud.libreria.utils.Utileria;
 
 @Service
 public class UsuarioServicioImpl implements UsuarioServicio{
@@ -34,7 +35,7 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 		List<Rol> rs = (List<Rol>)rolRepository.findAllAndPrivilegios();
 		List<RolResponse> pr = new ArrayList<RolResponse>();
 		for(Rol r :rs) {
-			pr.add(convertirRol(r));
+			pr.add(Utileria.convertirRol(r));
 		}
 		return pr;	
 	}
@@ -51,7 +52,7 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 		List<Usuario> resultado = (List<Usuario>)usuarioRepository.findAll();
 		List<UsuarioResponse> usuarios = new ArrayList<UsuarioResponse>();
 		for(Usuario u: resultado) {
-			UsuarioResponse ur=	convertirUsuario(u);
+			UsuarioResponse ur=	Utileria.convertirUsuario(u);
 			usuarios.add(ur);
 		}
 		return usuarios;
@@ -60,7 +61,7 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 	@Override
 	public UsuarioResponse consultarPorId(Long id) {
 		Usuario respuesta= usuarioRepository.findOne(id);
-		return convertirUsuario(respuesta);
+		return Utileria.convertirUsuario(respuesta);
 	
 	}
 	
@@ -74,40 +75,9 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 	
 	public RolResponse consultarRol(Long id)
 	{
-		return convertirRol(rolRepository.findById(id));
+		return Utileria.convertirRol(rolRepository.findById(id));
 	}
 
 	
-	private UsuarioResponse convertirUsuario(Usuario usuario) {
-		UsuarioResponse ur = new UsuarioResponse();
-		ur.setId(usuario.getId());
-		ur.setNombreUsuario(usuario.getNombreUsuario());
-		ur.setContrasena(usuario.getContrasena());
-		ur.setEstado(usuario.getEstado());
-		RolResponse rr = new RolResponse();
-		rr.setId(usuario.getRol().getId());
-		rr.setDescripcion(usuario.getRol().getDescripcion());
-		rr.setEstado(usuario.getRol().isEstado());
-		ur.setRol(rr);
-		return ur;
-	}
 	
-	private RolResponse convertirRol(Rol rol) {
-		RolResponse rr = new RolResponse();
-		rr.setId(rol.getId());
-		rr.setDescripcion(rol.getDescripcion());
-		rr.setEstado(rol.isEstado());
-		
-		List<Privilegio> prs  = new ArrayList<Privilegio>();
-		for(Privilegio pr : rol.getPrivilegios())
-		{
-			Privilegio p = new Privilegio();
-			p.setId(pr.getId());
-			p.setDescripcion(pr.getDescripcion());
-			prs.add(p);
-		}
-		
-		rr.setPrivilegios(prs);
-		return rr;
-	}
 }

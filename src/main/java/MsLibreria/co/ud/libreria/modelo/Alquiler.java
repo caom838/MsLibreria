@@ -60,18 +60,16 @@ public class Alquiler extends Operacion implements Serializable {
 	private MedioPago medioPago;
 
 	//bi-directional many-to-one association to Persona
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Persona.class)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Persona.class)
 	@JoinColumn(name="id_persona")
 	private Persona persona;
 
 
 	 @Access(AccessType.PROPERTY)
-	 @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Item.class)
+	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Item.class)
 	 @JoinTable(name = "itemalquiler", joinColumns = { @JoinColumn(name = "id_alquiler") }, 
 	 			inverseJoinColumns = { @JoinColumn(name = "id_item") })
-	 public List<Item> items;
+	 private List<Item> items;
 
-	public Double calcularTotal(){
-		return 0.0;
-	}
+
 }//end Alquiler

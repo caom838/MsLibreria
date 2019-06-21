@@ -59,22 +59,5 @@ public class ItemServicioImpl implements ItemServicio {
 		return (List<Categoria>)categoriaRepository.findAll();
 	}
 	
-	
-	private ItemRequest convertirItem(Item item) {
-		
-		ItemRequest itemE = new ItemRequest();
-		itemE.setNombre(item.getNombre());
-		itemE.setDescripcion(item.getDescripcion());
-		itemE.setBanderaAlquiler(item.getBanderaAlquiler());
-		itemE.setCodigoReferencia(item.getCodigoReferencia());
-		itemE.setEstado(item.getBanderaAlquiler());;
-		itemE.setPrecioAlquiler(item.getPrecioAlquiler());
-		itemE.setPrecioVenta(item.getPrecioVenta());
-		itemE.setStock(item.getStock());
-		//itemE.setCategorias(item.getCategorias());
-		
-		return itemE;
-	}
-	
 
 }

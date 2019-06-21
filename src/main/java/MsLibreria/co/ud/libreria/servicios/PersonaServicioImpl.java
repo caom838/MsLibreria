@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import MsLibreria.co.ud.libreria.dto.PersonaResponse;
-import MsLibreria.co.ud.libreria.dto.RolResponse;
-import MsLibreria.co.ud.libreria.dto.UsuarioResponse;
 import MsLibreria.co.ud.libreria.modelo.Cliente;
 import MsLibreria.co.ud.libreria.modelo.Empleado;
 import MsLibreria.co.ud.libreria.modelo.Persona;
-import MsLibreria.co.ud.libreria.modelo.Usuario;
 import MsLibreria.co.ud.libreria.repositorio.ClienteRepository;
 import MsLibreria.co.ud.libreria.repositorio.PersonaRepository;
+import MsLibreria.co.ud.libreria.utils.Utileria;
 
 @Service
 public class PersonaServicioImpl implements PersonaServicio{
@@ -27,7 +25,7 @@ public class PersonaServicioImpl implements PersonaServicio{
 	
 	@Override
 	public PersonaResponse consultarPersona(Long id) {
-		return convertirPersona(personaRepository.findOne(id));
+		return Utileria.convertirPersona(personaRepository.findOne(id));
 	}
 
 	@Override
@@ -47,7 +45,7 @@ public class PersonaServicioImpl implements PersonaServicio{
 
 	@Override
 	public PersonaResponse consultarEmpleado(Long id) {
-		return convertirPersona(personaRepository.getById(id));
+		return Utileria.convertirPersona(personaRepository.getById(id));
 		 
 	}
 	
@@ -58,7 +56,7 @@ public class PersonaServicioImpl implements PersonaServicio{
 		List<PersonaResponse> pr = new ArrayList<>();
 		for(Persona p : respuesta)
 		{
-			pr.add(convertirPersona(p));
+			pr.add(Utileria.convertirPersona(p));
 		}
 		
 		return pr;
@@ -71,39 +69,7 @@ public class PersonaServicioImpl implements PersonaServicio{
 	}
 
 	
-	private PersonaResponse convertirPersona(Persona persona)
-	{
-		PersonaResponse pr = new PersonaResponse();
-		
-		pr.setId(persona.getId());
-		
-		pr.setApellidos(persona.getApellidos());
-		pr.setCorreoElectronico(persona.getCorreoElectronico());
-		pr.setDireccionDomicilio(persona.getDireccionDomicilio());
-		pr.setEstado(persona.getEstado());
-		pr.setFechaRegistro(persona.getFechaRegistro());
-		pr.setIdentificador(persona.getIdentificador());
-		pr.setNombres(persona.getNombres());
-		pr.setTelefono(persona.getTelefono());
-		pr.setTipoIdentificador(persona.getTipoIdentificador());
-		pr.setUsuario(convertirUsuario(persona.getUsuario()));
-		
-		return pr;
-	} 
 	
-	private UsuarioResponse convertirUsuario(Usuario usuario) {
-		UsuarioResponse ur = new UsuarioResponse();
-		ur.setId(usuario.getId());
-		ur.setNombreUsuario(usuario.getNombreUsuario());
-		ur.setContrasena(usuario.getContrasena());
-		ur.setEstado(usuario.getEstado());
-		RolResponse rr = new RolResponse();
-		rr.setId(usuario.getRol().getId());
-		rr.setDescripcion(usuario.getRol().getDescripcion());
-		rr.setEstado(usuario.getRol().isEstado());
-		ur.setRol(rr);
-		return ur;
-	}
 
 	@Override
 	public Boolean guardarCliente(Cliente cliente) {

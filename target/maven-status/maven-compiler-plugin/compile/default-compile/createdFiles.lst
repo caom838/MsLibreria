@@ -28,7 +28,6 @@ MsLibreria\co\ud\libreria\repositorio\ItemRepository.class
 MsLibreria\co\ud\libreria\servicios\UsuarioServicio.class
 MsLibreria\co\ud\libreria\servicios\PersonaServicio.class
 MsLibreria\co\ud\libreria\dto\PersonaResponse.class
-MsLibreria\co\ud\libreria\controller\ShaPdfController.class
 MsLibreria\co\ud\libreria\modelo\Venta.class
 MsLibreria\co\ud\libreria\repositorio\CategoriaRepository.class
 MsLibreria\co\ud\libreria\repositorio\AlquilerRepository.class
@@ -39,8 +38,6 @@ MsLibreria\co\ud\libreria\modelo\Item.class
 MsLibreria\co\ud\libreria\modelo\MedioPago.class
 MsLibreria\co\ud\libreria\repositorio\ClienteRepository.class
 MsLibreria\co\ud\libreria\servicios\UsuarioServicioImpl.class
-MsLibreria\co\ud\libreria\service\IPdfService.class
-MsLibreria\co\ud\libreria\service\PdfService.class
 MsLibreria\co\ud\libreria\AppLibreria.class
 MsLibreria\co\ud\libreria\repositorio\RolRepository.class
 MsLibreria\co\ud\libreria\repositorio\PersonaRepository.class

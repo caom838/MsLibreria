@@ -31,7 +31,7 @@ public class VentaControlador {
 	@ResponseBody
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ApiOperation(value = "Agrega nuevo venta o editar uno existente", tags = "Venta", nickname = "venta", response = Venta.class)
-	public ResponseEntity<Boolean> agregarItem(
+	public ResponseEntity<Boolean> agregarVenta(
 		    @ApiParam(value = "venta", required = true) @RequestBody(required = true) Venta venta) {
 
 		Boolean respuesta;
@@ -54,7 +54,7 @@ public class VentaControlador {
 	@ResponseBody
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	@ApiOperation(value = "Consultar todos los item", tags = "Venta")
-	public ResponseEntity<List<Venta>> consultarItems() {
+	public ResponseEntity<List<Venta>> consultarVentas() {
 
 		List<Venta> resultado = ventaServicio.consultarVentas();
 
